@@ -1,0 +1,22 @@
+<h1 data-testid="title">{{ title }}</h1>
+
+<table>
+  <tr>
+    <th>id</th>
+    <th>name</th>
+    <th>price</th>
+  </tr>
+  <tr *ngFor="let product of products$ | async">
+    <td>
+      {{ product.Id }}
+    </td>
+    <td data-testid="productname">
+      {{ product.Name }}
+    </td>
+    <td>
+      {{ product.Price }}
+    </td>
+  </tr>
+</table>
+
+<router-outlet></router-outlet>

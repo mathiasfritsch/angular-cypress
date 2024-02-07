@@ -1,0 +1,23 @@
+name: End-to-end tests
+on: [push]
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set Time
+        run: sudo date --set "25 Sep 2013 15:00:00"
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: log Time 1
+        run: date
+      - name: Set timezone
+        uses: szenius/set-timezone@v1.1
+        with:
+          timezoneLinux: 'America/New_York'
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
+        with:
+          start: npm start
+          wait-on: http://localhost:4200
+      - name: log Time 2
+        run: date
